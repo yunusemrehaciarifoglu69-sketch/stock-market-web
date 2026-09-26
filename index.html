@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borsa Takip - Premium</title>
+    <meta name="description" content="Anlık borsa verileri ve gelişmiş analizler">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css?v=2">
+    <link rel="stylesheet" href="styles/layout.css?v=2">
+    <link rel="stylesheet" href="styles/components.css?v=2">
+    <link rel="stylesheet" href="styles/bot.css?v=1">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- FontAwesome Placeholder, using simple icons instead if fails -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark-theme">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="fa-solid fa-chart-column"></i>
+            </div>
+            <div class="logo-text">
+                <span class="brand">NOVEX</span>
+                <span class="tagline">TERMINAL</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#" class="nav-item active" id="nav-dashboard"><i class="fa-solid fa-house"></i> Panel</a>
+            <a href="#" class="nav-item" id="nav-market"><i class="fa-solid fa-list"></i> Piyasalar</a>
+            <a href="#" class="nav-item" id="nav-watchlist"><i class="fa-solid fa-star"></i> İzleme Listesi</a>
+            <a href="#" class="nav-item news-btn" id="nav-news"><i class="fa-solid fa-newspaper"></i> Haberler</a>
+            <a href="#" class="nav-item" id="nav-settings"><i class="fa-solid fa-gear"></i> Ayarlar</a>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">YE</div>
+            <div class="info">
+                <span class="name">Yunus Emre</span>
+                <span class="status">Pro Üyelik</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="global-search" placeholder="Hisse, Endeks veya Döviz Ara...">
+            </div>
+            <div class="actions">
+                <button class="icon-btn"><i class="fa-solid fa-bell"></i><span class="badge">3</span></button>
+                <button class="icon-btn"><i class="fa-solid fa-envelope"></i></button>
+            </div>
+        </header>
+
+        <!-- Ticker -->
+        <div class="ticker-wrap">
+            <div class="ticker" id="ticker-content">
+                <!-- Javascript will populate this -->
+            </div>
+        </div>
+
+        <!-- Dashboard Grid (Main View) -->
+        <div class="dashboard-grid" id="dashboard-view">
+            <!-- Market Overview Cards -->
+            <section class="market-overview">
+                <!-- Cards will be injected here -->
+            </section>
+
+            <!-- Chart & Trade Row -->
+            <!-- Main Chart Area -->
+            <section class="main-chart-section">
+                <div class="section-header" style="flex-wrap: wrap; gap:10px;">
+                    <div class="header-left-group" style="display:flex; align-items:center; gap:15px; flex:1;">
+                        <h2 id="chart-title" style="margin:0;">BIST 100 Genel Bakış</h2>
+                        <div class="indicators-menu" style="display:flex; gap:5px;">
+                            <button class="indicator-btn" data-ind="sma" title="Hareketli Ortalama (20)">SMA</button>
+                            <button class="indicator-btn" data-ind="bb" title="Bollinger Bantları">BB</button>
+                        </div>
+                    </div>
+                    <div class="time-filters">
+                        <button class="filter-btn">1G</button>
+                        <button class="filter-btn active">1H</button>
+                        <button class="filter-btn">1A</button>
+                        <button class="filter-btn">3A</button>
+                        <button class="filter-btn">1Y</button>
+                    </div>
+                </div>
+                <div class="chart-container" id="mainChartContainer"
+                    style="width:100%; height:400px; min-height:400px; background-color: #050505;">
+                    <!-- Custom Chart Engine -->
+                </div>
+            </section>
+
+            <!-- Stock List Table -->
+            <section class="stock-list-section">
+                <div class="section-header">
+                    <div class="header-left">
+                        <h2>Piyasa İzle</h2>
+                        <div class="category-tabs">
+                            <button class="tab-btn active" data-tab="stock">Hisseler</button>
+                            <button class="tab-btn" data-tab="crypto">Kripto</button>
+                            <button class="tab-btn" data-tab="commodity">Emtia</button>
+                            <button class="tab-btn" data-tab="fund">Fonlar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; padding-left: 1rem;">Varlık</th>
+                                <th style="text-align: right;">Fiyat</th>
+                                <th style="text-align: right;">Değişim %</th>
+                                <th style="text-align: right;">Hacim</th>
+                                <th style="text-align: center;">Trend</th>
+                                <th style="text-align: center;">İzle</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stock-table-body">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Watchlist Sidebar (Right) or Bottom Panel -->
+            <!-- For simplicity in grid, we might add a side panel or just keep it minimal -->
+        </div>
+
+        <!-- Settings View (Hidden by default) -->
+        <div class="settings-view" id="settings-view" style="display: none;">
+            <div class="settings-container">
+                <h2 class="settings-title">Uygulama Ayarları</h2>
+
+                <div class="settings-grid">
+                    <!-- Theme Settings -->
+                    <div class="settings-card">
+                        <h3><i class="fa-solid fa-paintbrush"></i> Tema & Görünüm</h3>
+                        <div class="setting-item">
+                            <label>Vurgu Rengi</label>
+                            <div class="color-picker">
+                                <button class="color-btn active" style="background: #6366f1;"
+                                    data-color="#6366f1"></button> <!-- Indigo -->
+                                <button class="color-btn" style="background: #3b82f6;" data-color="#3b82f6"></button>
+                                <!-- Blue -->
+                                <button class="color-btn" style="background: #10b981;" data-color="#10b981"></button>
+                                <!-- Emerald -->
+                                <button class="color-btn" style="background: #f59e0b;" data-color="#f59e0b"></button>
+                                <!-- Amber -->
+                                <button class="color-btn" style="background: #ec4899;" data-color="#ec4899"></button>
+                                <!-- Pink -->
+                                <button class="color-btn" style="background: #f1f5f9; border: 1px solid #cbd5e1;"
+                                    data-color="#ffffff" title="Aydınlık Tema"></button>
+                                <!-- Light -->
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label>Arka Plan Yoğunluğu</label>
+                            <select id="bg-intensity">
+                                <option value="dark">Derin Uzay (Varsayılan)</option>
+                                <option value="mid">Gece Mavisi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- App Settings -->
+                    <div class="settings-card">
+                        <h3><i class="fa-solid fa-server"></i> Sistem & Veri</h3>
+                        <div class="setting-item">
+                            <label>Veri Yenileme Hızı</label>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active">Normal</button>
+                                <button class="toggle-btn">Hızlı</button>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label>Bildirimler</label>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News View -->
+        <div class="news-view" id="news-view" style="display: none;">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>Piyasa Haberleri</h2>
+                <div class="time-filters">
+                    <button class="filter-btn active">Tümü</button>
+                    <button class="filter-btn">Hisse</button>
+                    <button class="filter-btn">Kripto</button>
+                    <button class="filter-btn">Ekonomi</button>
+                </div>
+            </div>
+            <div class="news-grid" id="news-grid">
+                <!-- News items injected by JS -->
+            </div>
+        </div>
+
+        <!-- Watchlist View (İlgilendiğiniz Ürünler) -->
+        <div class="watchlist-view" id="watchlist-view" style="display: none;">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2>İlgilendiğiniz Ürünler</h2>
+                <button class="filter-btn active" onclick="uiManager.renderWatchlistView()"><i
+                        class="fa-solid fa-rotate-right"></i> Yenile</button>
+            </div>
+
+            <div class="table-container">
+                <table class="stock-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; padding-left: 1rem;">Varlık</th>
+                            <th style="text-align: right;">Fiyat</th>
+                            <th style="text-align: right;">Değişim %</th>
+                            <th style="text-align: right;">Hacim</th>
+                            <th style="text-align: center;">Trend</th>
+                            <th style="text-align: center;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="watchlist-table-body">
+                        <!-- Watchlist items injected by JS -->
+                    </tbody>
+                </table>
+                <div id="watchlist-empty"
+                    style="display:none; text-align:center; padding: 3rem; color: var(--text-secondary);">
+                    <i class="fa-regular fa-star" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <p>Henüz ilgilendiğiniz bir ürün eklemediniz.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/data.js?v=2"></script>
+    <script src="js/charts.js?v=2"></script>
+    <script src="js/ui.js?v=2"></script>
+    <script src="js/main.js?v=2"></script>
+    <script src="js/bot.js?v=1"></script>
+</body>
+
+</html>

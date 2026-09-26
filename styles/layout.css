@@ -1,0 +1,358 @@
+/* Layout Structure */
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+    transition: width 0.3s ease;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    /* Explicitly restrict width */
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Fix for flex item overflow */
+}
+
+/* Sidebar Components */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+    padding: 0 0.5rem;
+    margin-top: 1.5rem;
+    /* Aşağı kaydırıldı */
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.03);
+    /* Koyu şeffaf zemin */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* İnce çerçeve */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    /* İkon rengi tema rengi olsun */
+    font-size: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    /* Derinlik */
+    text-shadow: 0 0 10px var(--accent);
+    /* Neon parlama efekti */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-text .brand {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.logo-text .tagline {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-top: 2px;
+    opacity: 0.7;
+}
+
+.logo-area i {
+    margin-right: 0.8rem;
+    color: var(--accent);
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.sidebar nav {
+    padding: 2rem 1rem;
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-item i {
+    margin-right: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: var(--accent-glow);
+    color: var(--accent);
+}
+
+.nav-item.active {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left: 3px solid var(--accent);
+}
+
+.user-profile {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, var(--accent), #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+}
+
+.user-profile .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile .name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.user-profile .status {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Header */
+.top-bar {
+    height: var(--header-height);
+    background-color: var(--bg-dark);
+    /* Transparent/same as bg */
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    border-bottom: 1px solid var(--border);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    width: 350px;
+    transition: border-color 0.3s;
+}
+
+.search-box:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.search-box i {
+    color: var(--text-secondary);
+    margin-right: 0.8rem;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    width: 100%;
+    outline: none;
+    font-family: var(--font-main);
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-hover);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.market-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.main-chart-section {
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    min-height: 400px;
+}
+
+.stock-list-section {
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.chart-container {
+    background-color: #050505;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+    min-height: 300px;
+    width: 100%;
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.2s;
+    font-size: 0.85rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.view-all-btn {
+    background: transparent;
+    color: var(--accent);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 80px;
+    }
+
+    .sidebar .logo-area span,
+    .sidebar nav span,
+    .user-profile .info {
+        display: none;
+    }
+
+    .sidebar .logo-area,
+    .sidebar nav,
+    .user-profile {
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .nav-item {
+        justify-content: center;
+    }
+
+    .nav-item i {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .main-content {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 768px) {
+    .market-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        width: 200px;
+    }
+}

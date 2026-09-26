@@ -1,0 +1,92 @@
+:root {
+    /* Premium Deep Dark Theme */
+    --bg-dark: #020617;
+    /* Slate 950 - Derin Uzay Siyahı */
+    --bg-card: #0f172a;
+    /* Slate 900 - Kart Arka Planı */
+    --bg-hover: #1e293b;
+    /* Slate 800 - Hover Durumu */
+
+    --text-primary: #f8fafc;
+    /* Slate 50 - Ana Metin */
+    --text-secondary: #94a3b8;
+    /* Slate 400 - İkincil Metin */
+
+    --accent: #6366f1;
+    /* Indigo 500 - Yeni Ana Renk (Daha modern mavi/mor) */
+    --accent-hover: #4f46e5;
+    /* Indigo 600 */
+
+    --success: #10b981;
+    /* Emerald 500 - Canlı Yeşil */
+    --danger: #ef4444;
+    /* Red 500 - Canlı Kırmızı */
+
+    --border: #1e293b;
+    /* Slate 800 - Sınır Rengi */
+
+    --sidebar-width: 260px;
+    --header-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Utility Classes */
+.text-success {
+    color: var(--success);
+}
+
+.text-danger {
+    color: var(--danger);
+}
+
+.badge {
+    background: var(--danger);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
